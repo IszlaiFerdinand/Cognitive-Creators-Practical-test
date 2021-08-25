@@ -19,13 +19,12 @@
             <div class="text-center col-sm-12 my-5">
                 <form action="Login" method="POST">
                     {% csrf_token %}
-                    <h1 class="mb-3 font-weight-normal">Welcome!</h1>
-                    <label for="emailAdress" class="sr-only">Please fill in your email adress</label>
+                    <h1 class="mb-3 font-weight-normal">Welcome {{ name }}!</h1>
+                    <label for="password" class="sr-only">Please enter your password!</label>
                     <div class="mt-3 mb-3">
-                        <input type="email" name="email" class="form-control" id="emailAdress" placeholder="name@example.com" required autofocus>
+                        <input type="password" name="password" class="form-control" id="password" required autofocus>
                     </div>
-                    <button type="submit" class="btn bt-lg btn-primary btn-block">Continue</button>
-                    <p>Do not have an account yet?<br>You can create one in the next step.</p>
+                    <button type="submit" class="btn bt-lg btn-primary btn-block">Login</button>
                 </form>
                 <a href="javascript:alert('HELP!');">Need help?</a>
             </div>
