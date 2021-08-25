@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
+from django.contrib import messages
 # Create your views here.
 
 # Email check function
@@ -16,12 +17,39 @@ def Login(request):
             obj = User.objects.get(email=email)
             field_name = "first_name"
             field_value = getattr(obj, field_name)
+            global name
             name = field_value
             return render(request, 'Login1.html', {'name': name})
         else:
             return render(request, 'Register.html')
     else:
         return render(request, 'Login.html')
+
+# Actual login function
+
+
+def Login1(request):
+    if request.method == 'POST':
+        password = request.POST['password']
+        obj = User.objects.get(email=email)
+        field_name = "username"
+        field_value = getattr(obj, field_name)
+        print(password)
+        user = auth.authenticate(username=field_value, password=password)
+        print(user)
+        if user is not None:
+            auth.login(request, user)
+            print('all good')
+            return redirect('/')
+
+        else:
+            messages.info(request, 'Invalid password!')
+            print('not good')
+            return render(request, 'Login1.html', {'name': name})
+
+    # else:
+    #     return render(request, 'Login.html')
+
 
 # Registration function
 
