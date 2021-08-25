@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 # Create your views here.
 
+# Email check function
+
 
 def Login(request):
     if request.method == 'POST':
@@ -17,10 +19,11 @@ def Login(request):
             name = field_value
             return render(request, 'Login1.html', {'name': name})
         else:
-            print('Email free!')
             return render(request, 'Register.html')
     else:
         return render(request, 'Login.html')
+
+# Registration function
 
 
 def Register(request):

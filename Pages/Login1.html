@@ -17,7 +17,8 @@
             <img class="texrounded mx-auto d-block" src="{% static 'logo2.jpeg' %}" height="200" alt="logo on page">
             </div>
             <div class="text-center col-sm-12 my-5">
-                <form action="Login" method="POST">
+                <!-- Login form -->
+                <form action="Login1" method="POST">
                     {% csrf_token %}
                     <h1 class="mb-3 font-weight-normal">Welcome {{ name }}!</h1>
                     <label for="password" class="sr-only">Please enter your password!</label>
