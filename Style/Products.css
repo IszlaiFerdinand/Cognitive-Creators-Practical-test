@@ -45,3 +45,19 @@ nav {
   margin: auto;
   border-radius: 10px;
 }
+
+.container {
+  margin-top: 50px;
+  max-width: 80%;
+  text-align: center;
+}
+
+.col {
+  background-position: center;
+  position: relative;
+}
+
+h3 {
+  color: grey;
+  font-weight: bold;
+}

@@ -40,7 +40,7 @@ def Login1(request):
         # print(user)
         if user is not None:
             auth.login(request, user)
-            return render(request, 'Products.html')
+            return render(request, 'Products.html', {'email': email})
 
         else:
             message = "Invalid password! Try again!"
@@ -67,7 +67,7 @@ def Register(request):
                 username=username, password=pw1, email=email, first_name=first_name, last_name=last_name)
             user.save()
             # print("User created")
-            return render(request, 'Products.html')
+            return render(request, 'Products.html', {'email': email})
         else:
             message = "Passwords are not matching!"
             return render(request, 'Register.html', {'message': message})

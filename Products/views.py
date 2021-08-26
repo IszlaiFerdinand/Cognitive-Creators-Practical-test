@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import logout
 # Create your views here.
 
 
@@ -10,3 +11,8 @@ def Products(request):
     return render(request, "Products.html")
     # else:
     #     return render(request, './Login.html')
+
+
+def Logout(request):
+    logout(request)
+    return redirect('/')
