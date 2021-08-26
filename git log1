@@ -1,4 +1,28 @@
-[33mcommit dc855aff76b6cc44acd8819f768fbdbb11032418[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+[33mcommit b49cd776b6cdc885bddc2da21450b7828a73c837[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Iszlai Ferdinand <ferdinandiszlai@gmail.com>
+Date:   Thu Aug 26 12:03:00 2021 +0300
+
+    Creating Products page
+
+[33mcommit dedea7e2640b9b140d212f980be4af5e2102c502[m
+Author: Iszlai Ferdinand <ferdinandiszlai@gmail.com>
+Date:   Thu Aug 26 11:38:49 2021 +0300
+
+    Validation updates
+
+[33mcommit 1774538350b720fcf97b6c316b5de6178f9586b8[m
+Author: Iszlai Ferdinand <ferdinandiszlai@gmail.com>
+Date:   Wed Aug 25 21:34:18 2021 +0300
+
+    bug fixes
+
+[33mcommit c4d1706e866a49e7c99467640433d3f90dbaae05[m
+Author: Iszlai Ferdinand <ferdinandiszlai@gmail.com>
+Date:   Wed Aug 25 20:42:14 2021 +0300
+
+    Commenting the code
+
+[33mcommit dc855aff76b6cc44acd8819f768fbdbb11032418[m
 Author: Iszlai Ferdinand <ferdinandiszlai@gmail.com>
 Date:   Wed Aug 25 17:26:16 2021 +0300
 
