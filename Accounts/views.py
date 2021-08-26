@@ -13,7 +13,7 @@ def Login(request):
         email = request.POST.get("email")
 
         if User.objects.filter(email=email).exists():
-            print('Email taken!')
+            # print('Email taken!')
             obj = User.objects.get(email=email)
             field_name = "first_name"
             field_value = getattr(obj, field_name)
@@ -34,21 +34,18 @@ def Login1(request):
         obj = User.objects.get(email=email)
         field_name = "username"
         field_value = getattr(obj, field_name)
-        print(password)
         user = auth.authenticate(username=field_value, password=password)
-        print(user)
+        # print(user)
         if user is not None:
             auth.login(request, user)
-            print('all good')
             return redirect('/')
 
         else:
-            messages.info(request, 'Invalid password!')
-            print('not good')
-            return render(request, 'Login1.html', {'name': name})
+            message = "Invalid password! Try again!"
+            return render(request, 'Login1.html', {'name': name, 'message': message})
 
-    # else:
-    #     return render(request, 'Login.html')
+    else:
+        return render(request, 'Login.html')
 
 
 # Registration function
@@ -66,11 +63,11 @@ def Register(request):
             user = User.objects.create_user(
                 username=username, password=pw1, email=email, first_name=first_name, last_name=last_name)
             user.save()
-            print("User created")
+            # print("User created")
             return redirect('/')
         else:
-            print("Passwords not matching")
-            return render(request, 'Register.html')
+            message = "Passwords are not matching!"
+            return render(request, 'Register.html', {'message': message})
 
     else:
         return render(request, 'Register.html')
