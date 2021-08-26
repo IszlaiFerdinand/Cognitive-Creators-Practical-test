@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
+from Products.models import Category, Product, Brand
 # Create your views here.
 
 # Email check function
@@ -40,7 +41,10 @@ def Login1(request):
         # print(user)
         if user is not None:
             auth.login(request, user)
-            return render(request, 'Products.html', {'email': email})
+            categories = Category.objects.all()
+            brands = Brand.objects.all()
+            products = Product.objects.all()
+            return render(request, 'Products.html', {'email': email, 'categories': categories, 'brands': brands, 'products': products})
 
         else:
             message = "Invalid password! Try again!"
@@ -66,8 +70,10 @@ def Register(request):
             user = User.objects.create_user(
                 username=username, password=pw1, email=email, first_name=first_name, last_name=last_name)
             user.save()
-            # print("User created")
-            return render(request, 'Products.html', {'email': email})
+            categories = Category.objects.all()
+            brands = Brand.objects.all()
+            products = Product.objects.all()
+            return render(request, 'Products.html', {'email': email, 'categories': categories, 'brands': brands, 'products': products})
         else:
             message = "Passwords are not matching!"
             return render(request, 'Register.html', {'message': message})

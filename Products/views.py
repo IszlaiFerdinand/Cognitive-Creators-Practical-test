@@ -7,10 +7,7 @@ from django.contrib.auth import logout
 
 @csrf_exempt
 def Products(request):
-    # if request.method == 'POST':
     return render(request, "Products.html")
-    # else:
-    #     return render(request, './Login.html')
 
 
 def Logout(request):

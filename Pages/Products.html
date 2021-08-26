@@ -42,23 +42,18 @@
 
        <div class="container">
            <div class="row justify-content-around">
-               <div class="col-md-1 col-sm-3 border p-3 m-1">Category </div>
-               <div class="col-md-1 col-sm-3 border p-3 m-1">Category </div>
-               <div class="col-md-1 col-sm-3 border p-3 m-1">Category </div>
-               <div class="col-md-1 col-sm-3 border p-3 m-1">Category </div>
-               <div class="col-md-1 col-sm-3 border p-3 m-1">Category </div>
-               <div class="col-md-1 col-sm-3 border p-3 m-1">Category </div>
+               {% for category in  categories %}
+               <div class="col-md-1 col-sm-3 p-3 m-1"><button class="btn btn-primary" type="submit">{{ category.name }}</button> </div>
+               {% endfor %}
            </div>
        </div>
 
        <div class="container">
            <div class="row justify-content-around">
                 <div class="col-md-2">
-                    <div class="row border p-3 m-1">brand</div>
-                    <div class="row border p-3 m-1">brand</div>
-                    <div class="row border p-3 m-1">brand</div>
-                    <div class="row border p-3 m-1">brand</div>
-                    <div class="row border p-3 m-1">brand</div>
+                    {% for brand in  brands %}
+                    <div class="row border p-3 m-1"><button class="btn btn-primary" type="submit">{{ brand.name }}</button></div>
+                    {% endfor %}
                 </div>
                 <div class="col-md-9 border p-3 m-1">
                     <div class="row">
