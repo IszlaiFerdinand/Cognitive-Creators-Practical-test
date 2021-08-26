@@ -23,10 +23,6 @@ section {
   animation: change 10s ease-in-out infinite;
 }
 
-h1 {
-  color: gray;
-}
-
 @keyframes change {
   0% {
     background-position: 0 50%;
@@ -39,39 +35,13 @@ h1 {
   }
 }
 
-form {
-  max-width: 700px;
-  margin: auto;
-  padding: 2rem;
-  background-color: #fff;
-  border-radius: 15px;
-}
-
-p {
-  margin-top: 10px;
-  margin-bottom: 0;
-  color: black;
-}
-
-label {
-  color: black;
-}
-
-button {
-  width: 70%;
-}
-
-input {
-  width: 70%;
-}
-
-a:link {
-  margin-top: 15px;
-  text-decoration: none;
-}
-
 img {
   width: auto;
   border-radius: 20px;
-  margin-top: 15px;
+}
+
+nav {
+  max-width: 80%;
+  margin: auto;
+  border-radius: 10px;
 }

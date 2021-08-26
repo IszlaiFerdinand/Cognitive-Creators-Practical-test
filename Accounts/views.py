@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 # Email check function
@@ -28,6 +29,7 @@ def Login(request):
 # Actual login function
 
 
+@csrf_exempt
 def Login1(request):
     if request.method == 'POST':
         password = request.POST['password']
@@ -51,6 +53,7 @@ def Login1(request):
 # Registration function
 
 
+@csrf_exempt
 def Register(request):
     if request.method == 'POST':
         first_name = request.POST['firstname']

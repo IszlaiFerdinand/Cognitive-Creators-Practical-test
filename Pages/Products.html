@@ -12,7 +12,34 @@
 </head>
 <body>
     <section>
-        <h1>HELLO products</h1>
+       <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
+            <a href="https://www.cognitivecreators.com/" class="navbar-brand mb-0 mt-0 h1">
+                <img class="d-inline-block align-top mt-0 ms-3" src="{% static 'logo.png' %}" alt="navbar logo" width="70" height="70">
+            </a>
+            <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler me-3">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse inline my-2 my-lg-0" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link disabled h4">
+                            My account
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link disabled h4">
+                           Favourites
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link h4">
+                            Cart
+                        </a>
+                    </li>    
+                </ul>
+            </div>
+       </nav>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
