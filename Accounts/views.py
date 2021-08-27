@@ -44,7 +44,8 @@ def Login1(request):
             categories = Category.objects.all()
             brands = Brand.objects.all()
             products = Product.objects.all()
-            return render(request, 'Products.html', {'email': email, 'categories': categories, 'brands': brands, 'products': products})
+            category = "All categories"
+            return render(request, 'Products.html', {'email': email, 'categories': categories, 'brands': brands, 'products': products, 'category': category})
 
         else:
             message = "Invalid password! Try again!"
@@ -73,7 +74,8 @@ def Register(request):
             categories = Category.objects.all()
             brands = Brand.objects.all()
             products = Product.objects.all()
-            return render(request, 'Products.html', {'email': email, 'categories': categories, 'brands': brands, 'products': products})
+            category = "All categories"
+            return render(request, 'Products.html', {'email': email, 'categories': categories, 'brands': brands, 'products': products, 'category': category})
         else:
             message = "Passwords are not matching!"
             return render(request, 'Register.html', {'message': message})

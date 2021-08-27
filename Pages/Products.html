@@ -51,18 +51,26 @@
        <div class="container">
            <div class="row justify-content-around">
                 <div class="col-md-2 border bg-secondary">
+                    <h3 class="border bg-success ">{{ category }}</h3>
+                    <h4>Filter by brand</h4>
                     {% for brand in  brands %}
                     <div class="row p-3 m-1"><button class="btn btn-light btn-block" type="submit">{{ brand.name }}</button></div>
                     {% endfor %}
                 </div>
                 <div class="col-md-9 border bg-secondary p-3 m-1">
-                    <div class="row">
-                        <div class="col border p-3 m-1">
-                        <img src="{% static 'pirelli.jpeg' %}" alt="" height="200">
-                        <h2> Pirelli Zero</h2> 
-                        <h3> 205/55/R16</h3>
-                        </div>
-                        <div class="col border p-3 m-1">
+                    <div class="row justify-content-center">
+                        {% for product in products %}
+                            <div class="col border p-3 m-1">
+                            <img src="{{product.img.url}}" alt="" height="200">
+                            <h2> {{product.name}}</h2> 
+                            <h3> {{product.size}}</h3>
+                            </div>
+                        {% if forloop.counter|divisibleby:4 %}
+                            </div>
+                            <div class="row justify-content-center">
+                        {% endif %}
+                        {% endfor %}
+                        <!-- <div class="col border p-3 m-1">
                             <img src="{% static 'pirelli.jpeg' %}" alt="" height="200">
                             <h2> Pirelli Zero</h2> 
                             <h3> 205/55/R16</h3>
@@ -76,7 +84,13 @@
                             <img src="{% static 'pirelli.jpeg' %}" alt="" height="200">
                             <h2> Pirelli Zero</h2> 
                             <h3> 205/55/R16</h3>
-                        </div>
+                        </div> -->
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col border p-3 m-1">termek</div>
+                        <div class="col border p-3 m-1">termek</div>
+                        <div class="col border p-3 m-1">termek</div>
+                        <div class="col border p-3 m-1">termek</div>
                     </div>
                     <div class="row">
                         <div class="col border p-3 m-1">termek</div>
@@ -101,13 +115,7 @@
                         <div class="col border p-3 m-1">termek</div>
                         <div class="col border p-3 m-1">termek</div>
                         <div class="col border p-3 m-1">termek</div>
-                    </div>
-                    <div class="row">
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
        </div>
