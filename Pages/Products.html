@@ -43,19 +43,19 @@
        <div class="container">
            <div class="row justify-content-around">
                {% for category in  categories %}
-               <div class="col-md-1 col-sm-3 p-3 m-1"><button class="btn btn-primary" type="submit">{{ category.name }}</button> </div>
+               <div class="col-md-1 col-sm-3"><button class="btn btn-primary btn-lg btn-block m-3 p-3" type="submit">{{ category.name }}</button> </div>
                {% endfor %}
            </div>
        </div>
 
        <div class="container">
            <div class="row justify-content-around">
-                <div class="col-md-2">
+                <div class="col-md-2 border bg-secondary">
                     {% for brand in  brands %}
-                    <div class="row border p-3 m-1"><button class="btn btn-primary" type="submit">{{ brand.name }}</button></div>
+                    <div class="row p-3 m-1"><button class="btn btn-light btn-block" type="submit">{{ brand.name }}</button></div>
                     {% endfor %}
                 </div>
-                <div class="col-md-9 border p-3 m-1">
+                <div class="col-md-9 border bg-secondary p-3 m-1">
                     <div class="row">
                         <div class="col border p-3 m-1">
                         <img src="{% static 'pirelli.jpeg' %}" alt="" height="200">
