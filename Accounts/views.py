@@ -63,7 +63,7 @@ def Register(request):
     if request.method == 'POST':
         first_name = request.POST['firstname']
         last_name = request.POST['lastname']
-        username = first_name+last_name
+        username = email
         pw = request.POST['password']
         pw1 = request.POST['password1']
 
@@ -71,6 +71,8 @@ def Register(request):
             user = User.objects.create_user(
                 username=username, password=pw1, email=email, first_name=first_name, last_name=last_name)
             user.save()
+            user = auth.authenticate(username=username, password=pw1)
+            auth.login(request, user)
             categories = Category.objects.all()
             brands = Brand.objects.all()
             products = Product.objects.all()

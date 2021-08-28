@@ -16,7 +16,7 @@
             <a href="https://www.cognitivecreators.com/" class="navbar-brand mb-0 mt-0 h1">
                 <img class="d-inline-block align-top mt-0 ms-3" src="{% static 'logo.png' %}" alt="navbar logo" width="70" height="70">
             </a>
-            <h3>Welcome, {{ request.user.username }}!</h3>
+            <h3 class="text-secondary">Welcome, {{ request.user.first_name|add:" "|add:request.user.last_name }}!</h3>
             <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler me-3">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,11 +41,13 @@
        </nav>
 
        <div class="container">
+        <form method="GET">
            <div class="row justify-content-around">
-               {% for category in  categories %}
-               <div class="col-md-1 col-sm-3"><button class="btn btn-primary btn-lg btn-block m-3 p-3" type="submit">{{ category.name }}</button> </div>
-               {% endfor %}
+                {% for category in  categories %}
+                <div class="col-md-1 col-sm-3"><button class="btn btn-primary btn-lg btn-block m-3 p-3" type="submit" value="{{ category.id }}">{{ category.name }}</button> </div>
+                {% endfor %} 
            </div>
+        </form>
        </div>
 
        <div class="container">
