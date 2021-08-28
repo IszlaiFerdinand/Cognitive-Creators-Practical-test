@@ -44,7 +44,7 @@
         <form action="Categoryfilter" method="GET">
            <div class="row justify-content-around">
                 {% for category in  categories %}
-                <div class="col-md-1 col-sm-3"><button class="btn btn-primary btn-lg btn-block m-3 p-3" type="submit" name="category" value="{{ category.id }}">{{ category.name }} {{ category.id }} </button> </div>
+                <div class="col-md-1 col-sm-3"><button class="btn btn-primary btn-lg btn-block m-3 p-3" type="submit" name="category" value="{{ category.id }}">{{ category.name }}</button> </div>
                 {% endfor %} 
            </div>
         </form>
@@ -57,7 +57,7 @@
                     <h4>Filter by brand</h4>
                     <form action="Brandfilter" method="GET">
                         {% for brand in  brands %}
-                        <div class="row p-3 m-1"><button class="btn btn-light btn-block" type="submit" name="brand" value='{{ brand.id }}'>{{ brand.name }} {{ brand.id }}</button></div>
+                        <div class="row p-3 m-1"><button class="btn btn-light btn-block" type="submit" name="brand" value='{{ brand.id }}'>{{ brand.name }}</button></div>
                         {% endfor %}
                     </form>
                 </div>
@@ -68,6 +68,12 @@
                                 <img src="{{product.img.url}}" alt="" height="200">
                                 <h2> {{product.name}}</h2> 
                                 <h3> {{product.size}}</h3>
+                                <h3>In stock:{{product.onstock}}</h3>
+                                <form>
+                                    <label for="quantity">Quantity (between 1 and {{product.onstock}}):</label>
+                                    <input type="number" id="quantity" name="quantity" min="1" max="{{product.onstock}}" value="4">
+                                    <button type="submit" class="btn btn-success" value="addtocart">Add to cart</button>
+                                </form>
                                 </div>
                         {% if forloop.counter|divisibleby:4 %}
                             </div>
@@ -75,53 +81,8 @@
                         {% endif %}
                         {% empty %}
                             <h1>There are no available products in this category!</h1>
-                        {% endfor %}
-                        <!-- <div class="col border p-3 m-1">
-                            <img src="{% static 'pirelli.jpeg' %}" alt="" height="200">
-                            <h2> Pirelli Zero</h2> 
-                            <h3> 205/55/R16</h3>
-                        </div>
-                        <div class="col border p-3 m-1">
-                            <img src="{% static 'pirelli.jpeg' %}" alt="" height="200">
-                            <h2> Pirelli Zero</h2> 
-                            <h3> 205/55/R16</h3>
-                        </div>
-                        <div class="col border p-3 m-1">
-                            <img src="{% static 'pirelli.jpeg' %}" alt="" height="200">
-                            <h2> Pirelli Zero</h2> 
-                            <h3> 205/55/R16</h3>
-                        </div> -->
+                        {% endfor %}    
                     </div>
-                    <!-- <div class="row">
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                    </div>
-                    <div class="row">
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                    </div>
-                    <div class="row">
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                    </div>
-                    <div class="row">
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                    </div>
-                    <div class="row">
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                        <div class="col border p-3 m-1">termek</div>
-                    </div> -->
                 </div>
             </div>
        </div>
