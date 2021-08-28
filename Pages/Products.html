@@ -41,10 +41,10 @@
        </nav>
 
        <div class="container">
-        <form method="GET">
+        <form action="Categoryfilter" method="GET">
            <div class="row justify-content-around">
                 {% for category in  categories %}
-                <div class="col-md-1 col-sm-3"><button class="btn btn-primary btn-lg btn-block m-3 p-3" type="submit" value="{{ category.id }}">{{ category.name }}</button> </div>
+                <div class="col-md-1 col-sm-3"><button class="btn btn-primary btn-lg btn-block m-3 p-3" type="submit" name="category" value="{{ category.id }}">{{ category.name }} {{ category.id }} </button> </div>
                 {% endfor %} 
            </div>
         </form>
@@ -55,22 +55,26 @@
                 <div class="col-md-2 border bg-secondary">
                     <h3 class="border bg-success ">{{ category }}</h3>
                     <h4>Filter by brand</h4>
-                    {% for brand in  brands %}
-                    <div class="row p-3 m-1"><button class="btn btn-light btn-block" type="submit">{{ brand.name }}</button></div>
-                    {% endfor %}
+                    <form action="Brandfilter" method="GET">
+                        {% for brand in  brands %}
+                        <div class="row p-3 m-1"><button class="btn btn-light btn-block" type="submit" name="brand" value='{{ brand.id }}'>{{ brand.name }} {{ brand.id }}</button></div>
+                        {% endfor %}
+                    </form>
                 </div>
                 <div class="col-md-9 border bg-secondary p-3 m-1">
                     <div class="row justify-content-center">
                         {% for product in products %}
-                            <div class="col border p-3 m-1">
-                            <img src="{{product.img.url}}" alt="" height="200">
-                            <h2> {{product.name}}</h2> 
-                            <h3> {{product.size}}</h3>
-                            </div>
+                                <div class="col border p-3 m-1">
+                                <img src="{{product.img.url}}" alt="" height="200">
+                                <h2> {{product.name}}</h2> 
+                                <h3> {{product.size}}</h3>
+                                </div>
                         {% if forloop.counter|divisibleby:4 %}
                             </div>
                             <div class="row justify-content-center">
                         {% endif %}
+                        {% empty %}
+                            <h1>There are no available products in this category!</h1>
                         {% endfor %}
                         <!-- <div class="col border p-3 m-1">
                             <img src="{% static 'pirelli.jpeg' %}" alt="" height="200">

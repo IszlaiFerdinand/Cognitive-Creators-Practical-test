@@ -6,6 +6,17 @@ from django.views.decorators.csrf import csrf_exempt
 from Products.models import Category, Product, Brand
 # Create your views here.
 
+# home page
+
+
+def Home(request):
+    return render(request, 'Index.html')
+
+# registration page
+
+
+def Register1(request):
+    return render(request, 'Register.html')
 # Email check function
 
 
@@ -21,11 +32,11 @@ def Login(request):
             field_value = getattr(obj, field_name)
             global name
             name = field_value
-            return render(request, 'Login1.html', {'name': name})
+            return render(request, 'Login.html', {'name': name})
         else:
-            return render(request, 'Register.html')
+            return redirect('/Register')
     else:
-        return render(request, 'Login.html')
+        return render(request, 'Index.html')
 
 # Actual login function
 
@@ -49,10 +60,10 @@ def Login1(request):
 
         else:
             message = "Invalid password! Try again!"
-            return render(request, 'Login1.html', {'name': name, 'message': message})
+            return render(request, 'Login.html', {'name': name, 'message': message})
 
     else:
-        return render(request, 'Login.html')
+        return render(request, 'Index.html')
 
 
 # Registration function
@@ -83,4 +94,4 @@ def Register(request):
             return render(request, 'Register.html', {'message': message})
 
     else:
-        return render(request, 'Login.html')
+        return render(request, 'Index.html')
