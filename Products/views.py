@@ -101,6 +101,7 @@ def addtocart(request):
             brandID = 0
         if "category" not in globals():
             category = "All categories"
+        # Updating the stock after a product gets into the cart (I know this isn't the best way, because it is still in stock if it goes into the cart...)
         currentstock = Product.objects.get(id=productID).onstock
         updatedstock = currentstock - int(quantity)
         updateproduct = Product.objects.get(id=productID)
