@@ -69,8 +69,8 @@
                                 <img src="{{product.img.url}}" alt="" height="200">
                                 <h2> {{product.name}}</h2> 
                                 <h3> {{product.size}}</h3>
-                                <h3>In stock:{{product.onstock}}</h3>
                                 {% ifnotequal product.onstock 0 %}
+                                <h3>In stock:{{product.onstock}}</h3>
                                 <form action="addtocart" method="POST">
                                     {% csrf_token %}
                                     <label for="quantity">Quantity (between 1 and {{product.onstock}}):</label>
