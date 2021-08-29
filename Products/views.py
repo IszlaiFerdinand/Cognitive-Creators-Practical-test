@@ -61,6 +61,4 @@ def Brandfilter(request):
 
 def Logout(request):
     logout(request)
-    global email
-    email = None
     return redirect('/')
