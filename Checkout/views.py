@@ -16,7 +16,13 @@ def Checkout(request):
             totalamount += item.quantity*item.product.price
 
         totalwithVAT = totalamount*1.19
-        return render(request, 'Checkout.html', {'cart': cart, 'totalamount': totalamount, 'totalwithVAT': totalwithVAT})
+        # Checking if the QuerySet is empty or not
+        if cart.exists():
+            empty = False
+        else:
+            empty = True
+
+        return render(request, 'Checkout.html', {'cart': cart, 'totalamount': totalamount, 'totalwithVAT': totalwithVAT, 'empty': empty})
     else:
         return redirect('/')
 

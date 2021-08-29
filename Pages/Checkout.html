@@ -42,7 +42,10 @@
        </nav>
 
        <div class="container justify-content-center">
-        <h1>Shopping cart</h1>
+        <h1>Shopping cart summary</h1>
+        {% if empty %}
+        <h2 class="text-danger">Your shopping cart is empty!</h2>
+        {% else %}
         <table class="table table-striped">
             <tr>
                 <th scope="col"></th>
@@ -53,7 +56,7 @@
                 <th scope="col">Total price</th>
                 <th scope="col">Remove</th>
             </tr>
-                {% for cartitem in cart %}
+            {% for cartitem in cart %}
             <tr>
                 <td><img src="{{cartitem.product.img.url}}" alt="" height="50"></td>
                 <td>{{ cartitem.product.name }}</td>
@@ -64,9 +67,8 @@
                 <td> <form action="Removefromcart" method="GET">
                     <div class="row p-3 m-1"><button class="btn btn-danger" type="submit" name="remove" value='{{ cartitem.id }}'>Remove</button></div>
                 </form>   </td>
-
-                {% endfor %}
             </tr>
+            {% endfor %}
             <tr>
                 <td>Total products</td>
                 <td></td>
@@ -86,10 +88,11 @@
                 <td></td>
             </tr>
         </table>
+        {% endif %}
        </div>
 
-       <div class="container">
-            
+       <div class="container justify-content-center">
+        <h1>Finalize your order</h1>
        </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
