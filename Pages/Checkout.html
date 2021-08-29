@@ -41,17 +41,17 @@
             </div>
        </nav>
 
-       <div class="container">
+       <div class="container justify-content-center">
         <h1>Shopping cart</h1>
-        <table>
+        <table class="table table-striped">
             <tr>
-                <th></th>
-                <th>Product name</th>
-                <th>Size</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Total price</th>
-                <th>Remove</th>
+                <th scope="col"></th>
+                <th scope="col">Product name</th>
+                <th scope="col">Size</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Total price</th>
+                <th scope="col">Remove</th>
             </tr>
                 {% for cartitem in cart %}
             <tr>
@@ -66,6 +66,24 @@
                 </form>   </td>
 
                 {% endfor %}
+            </tr>
+            <tr>
+                <td>Total products</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ totalamount }} RON</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Total products with VAT(19%)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ totalwithVAT }} RON</td>
+                <td></td>
             </tr>
         </table>
        </div>

@@ -63,3 +63,15 @@ button {
   position: relative;
   transition: 0.5s;
 }
+table {
+  max-width: 60%;
+  margin: auto;
+}
+td {
+  font-weight: bold;
+}
+
+th {
+  font-weight: bolder;
+  font-size: 2rem;
+}
