@@ -12,11 +12,7 @@ from Products.models import Category, Product, Brand
 def Home(request):
     return render(request, 'Index.html')
 
-# registration page
 
-
-def Register1(request):
-    return render(request, 'Register.html')
 # Email check function
 
 
@@ -34,9 +30,9 @@ def Login(request):
             name = field_value
             return render(request, 'Login.html', {'name': name})
         else:
-            return redirect('/Register')
+            return render(request, 'Register.html')
     else:
-        return render(request, 'Index.html')
+        return redirect('/')
 
 # Actual login function
 
@@ -63,7 +59,7 @@ def Login1(request):
             return render(request, 'Login.html', {'name': name, 'message': message})
 
     else:
-        return render(request, 'Index.html')
+        return redirect('/')
 
 
 # Registration function
@@ -94,4 +90,4 @@ def Register(request):
             return render(request, 'Register.html', {'message': message})
 
     else:
-        return render(request, 'Index.html')
+        return redirect('/')
