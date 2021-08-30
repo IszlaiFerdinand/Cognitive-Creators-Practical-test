@@ -3,7 +3,7 @@ from Products.models import Category, Product, Brand, CartItems, Order
 from . import views
 # Create your views here.
 
-# Checkout page render
+# Checkout page rendering -> function
 
 
 def Checkout(request):
@@ -26,6 +26,8 @@ def Checkout(request):
     else:
         return redirect('/')
 
+# Removing items from cart -> function
+
 
 def Removefromcart(request):
     cartitems_id = request.GET['remove']
@@ -46,6 +48,7 @@ def Removefromcart(request):
 
 def Finalize(request):
     if request.method == 'POST':
+        # getting the data from completed form
         usertype = request.POST['type']
         firstname = request.POST['firstname']
         lastname = request.POST['lastname']
@@ -61,13 +64,14 @@ def Finalize(request):
         cart = CartItems.objects.select_related(
             'product').filter(user_id=userID, ordered=False)
         totalamount = 0
+        # calculating the totalamount and setting >ordered< field to True, so we can still access the ordered items, but they will not appear in cart
         for item in cart.iterator():
             totalamount += item.quantity*item.product.price
             item.ordered = True
             item.save()
 
         totalwithVAT = totalamount*1.19
-
+        # adding a new record to Order table
         newadd = Order(user_id=userID, usertype=usertype, firstname=firstname, lastname=lastname, email=email, adress=adress, iban=iban,
                        bank=bank, registrationnumber=registrationnumber, delivery=delivery, payment=payment, comments=comments, totalamount=totalwithVAT)
         newadd.save()

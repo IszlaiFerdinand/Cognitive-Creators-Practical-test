@@ -21,8 +21,8 @@ def Login(request):
         global email
         email = request.POST.get("email")
 
+        # Checking if the user exists
         if User.objects.filter(email=email).exists():
-            # print('Email taken!')
             obj = User.objects.get(email=email)
             field_name = "first_name"
             field_value = getattr(obj, field_name)
@@ -44,8 +44,9 @@ def Login1(request):
         obj = User.objects.get(email=email)
         field_name = "username"
         field_value = getattr(obj, field_name)
+        # trying to authenticate the use
         user = auth.authenticate(username=field_value, password=password)
-        # print(user)
+        # if the authentication is successfull generate the Products page
         if user is not None:
             auth.login(request, user)
             categories = Category.objects.all()
@@ -53,7 +54,7 @@ def Login1(request):
             products = Product.objects.all()
             category = "All categories"
             return render(request, 'Products.html', {'email': email, 'categories': categories, 'brands': brands, 'products': products, 'category': category})
-
+        # else write an error message
         else:
             message = "Invalid password! Try again!"
             return render(request, 'Login.html', {'name': name, 'message': message})
@@ -73,7 +74,7 @@ def Register(request):
         username = email
         pw = request.POST['password']
         pw1 = request.POST['password1']
-
+        # checking if the two passwords are the same
         if pw == pw1:
             user = User.objects.create_user(
                 username=username, password=pw1, email=email, first_name=first_name, last_name=last_name)
@@ -85,6 +86,7 @@ def Register(request):
             products = Product.objects.all()
             category = "All categories"
             return render(request, 'Products.html', {'email': email, 'categories': categories, 'brands': brands, 'products': products, 'category': category})
+        # if they are not writing an error message
         else:
             message = "Passwords are not matching!"
             return render(request, 'Register.html', {'message': message})

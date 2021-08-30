@@ -5,7 +5,7 @@ from django.contrib.auth import logout
 from Products.models import Category, Product, Brand, CartItems
 # Create your views here.
 
-# rendering Products page function
+# rendering Products page -> function
 
 
 @csrf_exempt
@@ -25,7 +25,7 @@ def Products(request):
         return redirect('/')
 
 
-# Filtering by category function
+# Filtering by category -> function
 
 
 def Categoryfilter(request):
@@ -43,7 +43,7 @@ def Categoryfilter(request):
     return render(request, "Products.html", {'email': email, 'categories': categories, 'brands': brands, 'products': products, 'category': category})
 
 
-# Filtering by brand function
+# Filtering by brand -> function
 
 
 def Brandfilter(request):
@@ -53,6 +53,7 @@ def Brandfilter(request):
     global brandID
     brandID = request.GET.get('brand')
     global categoryID
+    # checking if products are alredy filtered by Category
     if categoryID == 0:
         products = Product.objects.filter(brand_id=brandID)
     else:
@@ -61,14 +62,14 @@ def Brandfilter(request):
 
     return render(request, "Products.html", {'email': email, 'categories': categories, 'brands': brands, 'products': products, 'category': category})
 
-# Logout function
+# Logout -> function
 
 
 def Logout(request):
     logout(request)
     return redirect('/')
 
-# Add to cart function
+# Add to cart -> function
 
 
 def addtocart(request):
@@ -79,6 +80,7 @@ def addtocart(request):
         quantity = request.POST['quantity']
         productID = request.POST['productID']
         userID = request.user.id
+        # If already exists a specific item in the cart only update the amount of that item else create a new object in cart
         if CartItems.objects.filter(user_id=userID, product_id=productID, ordered=False).exists():
             currentamount = CartItems.objects.get(
                 user_id=userID, product_id=productID, ordered=False).quantity
