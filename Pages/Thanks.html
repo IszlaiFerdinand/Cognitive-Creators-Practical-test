@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'logo.png' %}" />
+    <link rel="stylesheet" href="{% static 'Checkout.css' %}"/>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <title>Products</title>
+</head>
+<body>
+    <section>
+       <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
+            <a href="https://www.cognitivecreators.com/" class="navbar-brand mb-0 mt-0 h1">
+                <img class="d-inline-block align-top mt-0 ms-3" src="{% static 'logo.png' %}" alt="navbar logo" width="70" height="70">
+            </a>
+            <h3 class="text-secondary">Welcome, {{ request.user.first_name|add:" "|add:request.user.last_name }}!</h3>
+            <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler me-3">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse inline my-2 my-lg-0" id="navbarNav">
+                <ul class="navbar-nav nav-tabs ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled h4">
+                           Favourites
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'Products' %}" class="nav-link h4">
+                            Products
+                        </a>
+                    </li>  
+                    <li class="nav-item">
+                        <a href="{% url 'Logout' %}" class="nav-link h4">Logout</a>
+                    </li>  
+                </ul>
+            </div>
+       </nav>
+
+       <h1>Thank you for placing an order!</h1>
+       <h1>You will be redirected to products page in 5 seconds...</h1>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

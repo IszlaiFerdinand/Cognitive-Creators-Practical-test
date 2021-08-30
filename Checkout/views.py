@@ -40,3 +40,34 @@ def Removefromcart(request):
     # deleting selected cart item from database
     CartItems.objects.filter(id=cartitems_id).delete()
     return views.Checkout(request)
+
+# Finalize order function
+
+
+def Finalize(request):
+    if request.method == 'POST':
+        usertype = request.POST['type']
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
+        email = request.POST['email']
+        adress = request.POST['adress']
+        iban = request.POST['iban']
+        bank = request.POST['bank']
+        registrationnumber = request.POST['reg']
+        delivery = request.POST['delivery']
+        payment = request.POST['payment']
+        comments = request.POST['comment']
+        print(usertype)
+        print(firstname)
+        print(lastname)
+        print(email)
+        print(adress)
+        print(iban)
+        print(bank)
+        print(registrationnumber)
+        print(delivery)
+        print(payment)
+        print(comments)
+        return render(request, "Thanks.html")
+    else:
+        return redirect('/')
