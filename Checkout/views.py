@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from Products.models import Category, Product, Brand, CartItems
+from Products.models import Category, Product, Brand, CartItems, Order
 from . import views
 # Create your views here.
 
@@ -10,7 +10,7 @@ def Checkout(request):
     if request.user.is_authenticated:
         userID = request.user.id
         cart = CartItems.objects.select_related(
-            'product').filter(user_id=userID)
+            'product').filter(user_id=userID, ordered=False)
         totalamount = 0
         for item in cart.iterator():
             totalamount += item.quantity*item.product.price
@@ -57,17 +57,21 @@ def Finalize(request):
         delivery = request.POST['delivery']
         payment = request.POST['payment']
         comments = request.POST['comment']
-        print(usertype)
-        print(firstname)
-        print(lastname)
-        print(email)
-        print(adress)
-        print(iban)
-        print(bank)
-        print(registrationnumber)
-        print(delivery)
-        print(payment)
-        print(comments)
+        userID = request.user.id
+        cart = CartItems.objects.select_related(
+            'product').filter(user_id=userID, ordered=False)
+        totalamount = 0
+        for item in cart.iterator():
+            totalamount += item.quantity*item.product.price
+            item.ordered = True
+            item.save()
+
+        totalwithVAT = totalamount*1.19
+
+        newadd = Order(user_id=userID, usertype=usertype, firstname=firstname, lastname=lastname, email=email, adress=adress, iban=iban,
+                       bank=bank, registrationnumber=registrationnumber, delivery=delivery, payment=payment, comments=comments, totalamount=totalwithVAT)
+        newadd.save()
+
         return render(request, "Thanks.html")
     else:
         return redirect('/')

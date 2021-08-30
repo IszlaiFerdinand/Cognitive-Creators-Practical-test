@@ -30,6 +30,7 @@ class CartItems(models.Model):
 
 
 class Order(models.Model):
+    user = models.ForeignKey(User,  on_delete=models.CASCADE,)
     usertype = models.CharField(max_length=150)
     firstname = models.CharField(max_length=150)
     lastname = models.CharField(max_length=150)

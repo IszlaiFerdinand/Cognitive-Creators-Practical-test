@@ -79,12 +79,12 @@ def addtocart(request):
         quantity = request.POST['quantity']
         productID = request.POST['productID']
         userID = request.user.id
-        if CartItems.objects.filter(user_id=userID, product_id=productID).exists():
+        if CartItems.objects.filter(user_id=userID, product_id=productID, ordered=False).exists():
             currentamount = CartItems.objects.get(
-                user_id=userID, product_id=productID).quantity
+                user_id=userID, product_id=productID, ordered=False).quantity
             updatedamount = currentamount + int(quantity)
             updatelisting = CartItems.objects.get(
-                user_id=userID, product_id=productID)
+                user_id=userID, product_id=productID, ordered=False)
             updatelisting.quantity = updatedamount
             updatelisting.save()
         else:
