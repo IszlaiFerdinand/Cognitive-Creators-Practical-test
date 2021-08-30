@@ -26,3 +26,19 @@ class CartItems(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE,)
     quantity = models.IntegerField()
     user = models.ForeignKey(User,  on_delete=models.CASCADE,)
+    ordered = models.BooleanField(default=False)
+
+
+class Order(models.Model):
+    usertype = models.CharField(max_length=150)
+    firstname = models.CharField(max_length=150)
+    lastname = models.CharField(max_length=150)
+    email = models.CharField(max_length=150)
+    adress = models.CharField(max_length=500)
+    iban = models.CharField(max_length=150)
+    bank = models.CharField(max_length=150)
+    registrationnumber = models.CharField(max_length=150)
+    delivery = models.CharField(max_length=150)
+    payment = models.CharField(max_length=150)
+    comments = models.CharField(max_length=150)
+    totalamount = models.FloatField(default=0)
